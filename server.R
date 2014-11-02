@@ -1,0 +1,92 @@
+#  R package AMADA 
+#  Copyright (C) 2014  COIN
+# Author : Rafael S. de Souza (rafael.2706@gmail.com)
+#This program is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License version 3 as published by
+#the Free Software Foundation.
+
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+
+#  A copy of the GNU General Public License is available at
+#  http://www.r-project.org/Licenses/
+#
+palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
+          "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"))
+library(AMADA)
+library(shiny)
+library(mvtnorm)
+library(pheatmap)
+library(markdown)
+library(shinyIncubator)
+options(shiny.maxRequestSize=100*1024^2)
+
+  
+shinyServer(function(input, output, session) {
+  # Now, we need to create the reactive container 
+  
+  selectedData <- reactive({
+    # First we need to have some data
+    if(input$dataSourceFlag == F) {
+    inFile <- input$file1
+    if (is.null(inFile)){
+      return(NULL)
+    #return("\n GRAD :: No file was uploaded for  estimation! ")
+    }
+    # Now read the files
+    read.table(inFile$datapath, header=T)} else{
+      if(input$data=="SNIa"){
+    
+               data(SNIa)
+             SNIa}
+      else{
+               data(Guo11)
+               Guo11
+               
+             }}
+  })
+  
+  clusters <- reactive({
+    kmeans(selectedData(), input$clusters)
+  })
+  
+  Temp.cor<-reactive({Corr_MIC(selectedData(),method=input$method)
+  })
+  
+# Creat the plot   
+# Heatmap
+output$plot1 <- renderPlot({
+  par(mar = c(0.5, 0.5, 0, 0.5))
+  pheatmap(Temp.cor(), display_numbers=input$shown,fontsize=20)
+  
+},
+height = 700, width = 800)
+
+# Correlation Matrix
+output$plot2 <- renderPlot({
+  par(mar = c(0.5, 0.5, 0, 0.5))
+  plotcorrDist(Temp.cor(), labels = NULL)
+  
+})
+
+# Dendogram
+output$plot3 <- renderPlot({
+ par(mar = c(0.5, 0.5, 0, 0.5))
+  plotdendrogram(Temp.cor())
+})
+
+  # Graph 
+  output$plot4 <- renderPlot({
+    par(mar = c(0.5, 0.5, 0, 0.5))
+    plotgraph(Temp.cor())
+})
+
+# PCA 
+output$plot5 <- renderPlot({
+  par(mar = c(0.5, 0.5, 0, 0.5))
+  sunburstPCA(Corr_MIC(selectedData(),method="pearson"),npcs=input$npcs)
+},height = 700, width = 900)
+
+})
