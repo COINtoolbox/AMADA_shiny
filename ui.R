@@ -103,9 +103,9 @@ mainPanel(
     tabPanel('Dataset',
              dataTableOutput("mytable1")),
     tabPanel("Heatmap",plotOutput('plot1')),
-      tabPanel("Distogram",plotOutput('plot2')),
+      tabPanel(title="Distogram",plotOutput('plot2'),p(textOutput("dist"))),
       tabPanel("Dendrogram",plotOutput('plot3')),
-      tabPanel("Graph",plotOutput('plot4')),
+      tabPanel("Graph",plotOutput('plot4'),verbatimTextOutput("text ola")),
       tabPanel("Nightingale chart",plotOutput('plot5',width = "100%")),
       tabPanel("Copyright", includeMarkdown("Copyright.md")),
      tabPanel("COIN", includeMarkdown("COIN.md"))

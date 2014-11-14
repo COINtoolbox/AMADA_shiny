@@ -86,6 +86,11 @@ output$plot1 <- renderPlot({
   
 },
 height = 700, width = 800)
+output$dist= renderText({
+  "The plot displays   the color-coded  dissimilarity level for each pair of variables. The bluest squares 
+  represents parameters with the low dissimilarity or high correlation, conversely the redests squares
+  parameters wit high dissimilarity or low correlation."
+})
 
 # Correlation Matrix
 output$plot2 <- renderPlot({
@@ -109,7 +114,7 @@ output$plot3 <- renderPlot({
 # PCA 
 output$plot5 <- renderPlot({
   par(mar = c(0.5, 0.5, 0, 0.5))
-  Nightingale(Corr_MIC(selectedData(),method="pearson"),npcs=input$npcs,PCAmethod=input$PCAmethod)
-},height = 700, width = 800)
+  Nightingale(Corr_MIC(selectedData(),method="pearson"),npcs=input$npcs,PCAmethod=input$PCAmethod)},
+height = 700, width = 800)
 
 })

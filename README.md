@@ -94,6 +94,7 @@ These are the standard types of plots:
 
 
 **Heatmap** Plots a correlation matrix color-coded by the correlation level between each pair of variables (e.g., [Raivo Kolde, 2013](http://CRAN.R-project.org/package=pheatmap)). 
+For visualization purpose, the arrangement of the rows and columns are made following a hierarchical clustering with a dendrogram drawn in the edges of the matrix.
 
 **Distogram** Plots  a distance  matrix  containing the distances, taken pairwise, of a all sets of variables (e.g., [Aron Eklund,  2012](http://www.cbs.dtu.dk/~eklund/squash/)). The distance being used is the correlation distance, given by d(x,y)= 1-|corr(x,y)|. 
 
