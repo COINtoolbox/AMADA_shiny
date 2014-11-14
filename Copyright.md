@@ -1,6 +1,7 @@
 ###  R package AMADA 
  Copyright (C) 2014  COIN
-### Author : Rafael S. de Souza (rafael.2706@gmail.com)
+#### Authors: Rafael S. de Souza (ELTE) (rafael.2706@gmail.com), Benedetta Ciardi (MPA)
+
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License version 3 as published by
 the Free Software Foundation.
@@ -12,3 +13,4 @@ GNU General Public License for more details.
 
 A copy of the GNU General Public License is available at
 http://www.r-project.org/Licenses/
+

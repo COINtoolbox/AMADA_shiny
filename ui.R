@@ -9,11 +9,12 @@ library(mvtnorm)
 library(pheatmap)
 library(markdown)
 library(shinyIncubator)
+require(shinysky)
 
-shinyUI(fluidPage(theme = "bootstrapblue.css",collapsable = TRUE,
+shinyUI(fluidPage(theme = "bootstrapblue.css",
  
   headerPanel('AMADA Web User Interface (v0.1)'),
-  img(src='COIN.jpg',height = 100, width = 600,align="right"),
+  img(src='COIN.jpg',height = 95, width = 650,align="right"),
   # Sidebar with controls
   sidebarPanel(
   
@@ -33,39 +34,63 @@ type="text/css", "
                z-index: 105;
              }
           ")),
-h3("Overview"),
-    p("The open source online interface for 
-Analysis of Multidimensional Astronomical DAtasets. This interface employs a hierarchical clustering 
-analysis into a numerical matrix for different choices of dissimilarity measurements", align = "left"),
+#h3("Overview"),
+#    p("AMADA allows an iterative exploration and information retrieval of high-dimensional data sets.
+#This is done by performing a hierarchical clustering analysis for different choices of correlation matrices and by doing a principal components analysis
+#in the original data. Additionally, AMADA provides a set of modern  visualization data-mining diagnostics. ", align = "left"),
    
 h4("Data Input"),
-    div(div(checkboxInput('dataSourceFlag', label=h5('Use Default'), T),class="radio"
+    div(div(checkboxInput('dataSourceFlag', label=h5('Available datasets'), T),class="radio"
         )),
     selectInput("data", "Dataset:",
-                list("Use SNe Type Ia data" = "SNIa",
-                     "N-body/hydro" = "Guo11")),
-    fileInput('file1', 'Upload your file', accept=c('.dat', '.txt')),
+                list("SNe Ia host galaxies" = "SNIa","SNe II host galaxies" = "SNII",
+                     "N-body halo catalog" = "Guo11","ZENS catalog"="ZENS")),
+fileInput('file1', 'Import dataset (CSV/TXT)', accept=c('.dat', '.txt','.csv')),
+
+ 
     
-    h4("Control and options"),
-h5("Heatmap"),
-selectInput("shown", "Display Numbers?",
-            list("Yes" = "T",
-                 "No" = "F"
-                 )),
-h5("Correlation"),
-selectInput("method", "Method:",
+    h4("Control  options"),
+h5("Dataset"),
+sliderInput('ntot', 'Fraction of data to display (%)', 10,
+            min = 10, max = 100,step=10),
+
+#h5("Correlation Method:"),
+selectInput("method", "Correlation Method:",
             list("Pearson" = "pearson",
                  "Spearman" = "spearman",
                  "MIC" = "MIC")),
-sliderInput('npcs', 'Number of PCs', 2,
-             min = 2, max = 10,step=1),
+
+h5("Heatmap"),
+selectInput("shown", "Display Numbers?",
+            list("No" = "F",
+                 "Yes" = "T"
+                )),
+
+h5("Dendrogram"),
+selectInput("type", "Type:",
+            list("Phylogram" = "phylogram",
+                 "Cladogram" = "cladogram",
+                 "Fan" = "fan")),
+h5("Graph"),
+selectInput("layout", "Layout:",
+            list("Spring" = "spring",
+                 "Circular" = "circular")),
+h5("Nightingale chart"),
+selectInput("PCAmethod", "PCA Method:",
+            list("PCA" = "PCA",
+                 "Robust PCA" = "RPCA"
+                 )),
+sliderInput('npcs', 'Number of PCs', 1,
+            min = 1, max = 10,step=1),
     br(), 
 submitButton("Make it so!", icon("refresh")),
 
 br(),
 wellPanel(
-  helpText(HTML("<b>Author</b>")),
+  helpText(HTML("<b>Authors</b>")),
   HTML('Rafael S. de Souza'),
+  HTML('<br>'),
+  HTML('Benedetta Ciardi'),
   HTML('<br>'),
   HTML('<a href="https://github.com/RafaelSdeSouza" target="_blank">Code on GitHub</a>')
 )
@@ -74,15 +99,19 @@ wellPanel(
 mainPanel(
     
   tabsetPanel(
-    tabPanel("Introduction", includeMarkdown("help.md")),
-      tabPanel("Heatmap",plotOutput('plot1')),
-      tabPanel("Correlation",plotOutput('plot2')),
+    tabPanel("Introduction", includeMarkdown("README.md")),
+    tabPanel('Dataset',
+             dataTableOutput("mytable1")),
+    tabPanel("Heatmap",plotOutput('plot1')),
+      tabPanel("Distogram",plotOutput('plot2')),
       tabPanel("Dendrogram",plotOutput('plot3')),
       tabPanel("Graph",plotOutput('plot4')),
-      tabPanel("PCA",plotOutput('plot5',width = "100%")),
-      tabPanel("Copyright", includeMarkdown("Copyright.md"))
+      tabPanel("Nightingale chart",plotOutput('plot5',width = "100%")),
+      tabPanel("Copyright", includeMarkdown("Copyright.md")),
+     tabPanel("COIN", includeMarkdown("COIN.md"))
       )),
 div(class="progress-bar",class="progress progress-striped active",style="width: 70%;",
     conditionalPanel(condition="$('html').hasClass('shiny-busy')",
-                     tags$div("Calculating... wait a minute.",align="top")))
+                     tags$div("Calculating... wait a minute.",align="top"))),
+busyIndicator("Calculating... wait a minute.",wait = 0)
 ))

@@ -21,6 +21,7 @@ library(mvtnorm)
 library(pheatmap)
 library(markdown)
 library(shinyIncubator)
+require(shinysky)
 options(shiny.maxRequestSize=100*1024^2)
 
   
@@ -36,25 +37,47 @@ shinyServer(function(input, output, session) {
     #return("\n GRAD :: No file was uploaded for  estimation! ")
     }
     # Now read the files
-    read.table(inFile$datapath, header=T)} else{
-      if(input$data=="SNIa"){
+    read.table(inFile$datapath, header=T)
     
-               data(SNIa)
+    }
+    
+    else{
+    if(input$data=="SNII"){
+      data(SNII)
+      SNII}else{
+   if(input$data=="SNIa"){
+           data(SNIa)
              SNIa}
-      else{
-               data(Guo11)
-               Guo11
-               
-             }}
-  })
-  
+   else{
+  if(input$data=="Guo11"){
+              data(Guo11)
+               Guo11}
+  else{
+      if(input$data=="ZENS"){
+                   data(ZENS)
+                   ZENS     
+                 
+               }}} }         
+  }})
+
+
+
+#  
+
   clusters <- reactive({
     kmeans(selectedData(), input$clusters)
   })
   
   Temp.cor<-reactive({Corr_MIC(selectedData(),method=input$method)
   })
-  
+
+# Show table
+
+output$mytable1 = renderDataTable({
+  nfrac<-(input$ntot/100)*dim(selectedData())[1]
+selectedData()[1:nfrac,]
+})
+
 # Creat the plot   
 # Heatmap
 output$plot1 <- renderPlot({
@@ -73,20 +96,20 @@ output$plot2 <- renderPlot({
 
 # Dendogram
 output$plot3 <- renderPlot({
- par(mar = c(0.5, 0.5, 0, 0.5))
-  plotdendrogram(Temp.cor())
-})
+ par(mar = c(3, 3, 3, 3))
+  plotdendrogram(Temp.cor(),type=input$type)
+},height = 600, width = 800)
 
   # Graph 
   output$plot4 <- renderPlot({
     par(mar = c(0.5, 0.5, 0, 0.5))
-    plotgraph(Temp.cor())
-})
+    plotgraph(Temp.cor(),layout=input$layout)
+},height = 600, width = 750)
 
 # PCA 
 output$plot5 <- renderPlot({
   par(mar = c(0.5, 0.5, 0, 0.5))
-  sunburstPCA(Corr_MIC(selectedData(),method="pearson"),npcs=input$npcs)
-},height = 700, width = 900)
+  Nightingale(Corr_MIC(selectedData(),method="pearson"),npcs=input$npcs,PCAmethod=input$PCAmethod)
+},height = 700, width = 800)
 
 })
