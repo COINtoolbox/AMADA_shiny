@@ -50,15 +50,17 @@ fileInput('file1', 'Import dataset (CSV/TXT)', accept=c('.dat', '.txt','.csv')),
  
     
     h4("Control  options"),
+
+h5("Correlation"),
+selectInput("method", "Method:",
+            list("Pearson" = "pearson",
+                 "Spearman" = "spearman",
+                 "MIC" = "MIC")),
 h5("Dataset"),
 sliderInput('ntot', 'Fraction of data to display (%)', 10,
             min = 10, max = 100,step=10),
 
-#h5("Correlation Method:"),
-selectInput("method", "Correlation Method:",
-            list("Pearson" = "pearson",
-                 "Spearman" = "spearman",
-                 "MIC" = "MIC")),
+
 
 h5("Heatmap"),
 selectInput("shown", "Display Numbers?",
@@ -103,7 +105,7 @@ mainPanel(
     tabPanel('Dataset',
              dataTableOutput("mytable1")),
     tabPanel("Heatmap",plotOutput('plot1')),
-      tabPanel(title="Distogram",plotOutput('plot2'),p(textOutput("dist"))),
+      tabPanel(title="Distogram",plotOutput('plot2')),
       tabPanel("Dendrogram",plotOutput('plot3')),
       tabPanel("Graph",plotOutput('plot4'),verbatimTextOutput("text ola")),
       tabPanel("Nightingale chart",plotOutput('plot5',width = "100%")),

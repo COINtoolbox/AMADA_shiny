@@ -4,21 +4,25 @@ Welcome to the AMADA - Analysis of Muldimensional Astronomical DAtasets
 
 AMADA allows an iterative exploration and information retrieval of high-dimensional data sets.
 This is done by performing a hierarchical clustering analysis for different choices of correlation matrices and by doing a principal components analysis
-in the original data. Additionally, AMADA provides a set of modern  visualization data-mining diagnostics.  The usear can switch between them using the different tabs. 
+in the original data. Additionally, AMADA provides a set of modern  visualization data-mining diagnostics.  The user can switch between them using the different tabs. 
 
 
 
 ###  Data Input
   
-AMADA allows the user to use among the available datasets or upload their own.   Check  the bottom of the 'Import Data' panel to see if the data have been properly imported. The data can be seen on the screen by clicking in the tab "Dataset" on the main page. 
+AMADA allows the users to either use available datasets or upload their own.   Check the bottom of the 'Import Dataset' panel to see if the data have been properly imported. The data can be seen on the screen by clicking in the tab "Dataset" on the main page. 
 
-#### Available datasets 
+#### Available datasets
 
-* Supernova host properties ([Sako, M. et al. 2014](http://adsabs.harvard.edu/abs/2014arXiv1401.3317S)): Type Ia and II  Supernova host-galaxy  properties  from  Sloan Digital Sky Survey  multi-band photometry.
+The enclosed datasets  are examples following the same nomenclature of  their respective source 
+articles. I suggest the user to check the original articles or catalogs for a better understanding of
+their meaning.
+
+* Supernova host properties ([Table 1, Sako, M. et al. 2014](http://adsabs.harvard.edu/abs/2014arXiv1401.3317S)): Type Ia and II  Supernova host-galaxy  properties  from  Sloan Digital Sky Survey  multi-band photometry.
 
 * Mock galaxy catalog ([Guo et al. 2011](http://adsabs.harvard.edu/abs/2011MNRAS.413..101G)): Galaxy semi-analytic  formation models build on top of  the Millennium  ([Springel et al. 2005](http://adsabs.harvard.edu/abs/2003MNRAS.339..312S)) and Millenium II simulations ([Boylan-Kolchin et al. 2009](http://adsabs.harvard.edu/abs/2009MNRAS.398.1150B)). 
 
-* ZENS catalog ([Carollo et al. 2012](http://arxiv.org/abs/1206.5807), [Cibinel et al. 2012](http://arxiv.org/abs/1206.6108), [Cibinel et al. 2013](http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1206.6496)): The Zurich ENvironmental Study (ZENS) is a survey of galaxy groups in the local universe.  The  sample consists of 141 groups in the  redshift range 0.05 < z < 0.0585.
+* [ZENS catalog](http://www.astro.ethz.ch/carollo/research/ZENS) ([Carollo et al. 2012](http://arxiv.org/abs/1206.5807), [Cibinel et al. 2012](http://arxiv.org/abs/1206.6108), [Cibinel et al. 2013](http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1206.6496)): The Zurich ENvironmental Study (ZENS) is a survey of galaxy groups in the local universe.  The  sample consists of 141 groups in the  redshift range 0.05 < z < 0.0585.
     
 
 
