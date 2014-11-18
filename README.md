@@ -33,21 +33,21 @@ It may contain an arbitrary number of columns and rows. If missing data is prese
 
 ### Control Options
 
-On the left panel, the user can choose among different methods of analysis and visualization. Once the combination is chosen, click on the button "make it so" to update the plots. 
+On the left panel, the user can choose among different methods of analysis and visualization. Once the combination is chosen, click on the button "Make it so" to update the plots. The following options are available:
 
-**Fraction of data to display** choose the percentage of data displayed on the screen. 
+**Fraction of data to display**: choose the percentage of data displayed on the screen. 
 
- **Correlation method**: *pearson*, *spearman* or *maximum information coefficient*. 
+ **Correlation method**:choose among *Pearson*, *Spearman* or *Maximum Information Coefficient (MIC)*. 
 
- **Display numbers** choose if correlation coefficients should be displayed in the heatmap. 
+ **Display numbers**: choose if correlation coefficients should be displayed in the heatmap. 
 
-**Dendrogram type**: *phylogram*, *cladrogram* or *fan*.
+**Dendrogram type**: choose among *Phylogram*, *Cladrogram* or *Fan*.
 
-**Graph layout**: *spring* or *circular*.
+**Graph layout**: choose among *Spring* or *Circular*.
 
- **Number of PCs** choose the number or principal components to display as Nightingale charts. 
+ **Number of PCs**: choose the number or principal components to display as Nightingale charts. 
 
- **PCA method**: *standard PCA* or *robust PCA*. 
+ **PCA method**: choose among *Standard PCA* or *Robust PCA*. 
 
 
 ### Employed  Analysis 
@@ -58,55 +58,55 @@ The current version of AMADA allows the user to choose among different types of 
 #### Principal Components Analysis
 
 
- **PCA** A orthogonal  transformation that linearly convert  a  dataset into a set of uncorrelated  variables called principal components (PCs). The PCs are computed by diagonalization of the data correlation matrix, with the resulting eigenvectors corresponding to PCs and the resulting
+ **PCA**: A orthogonal  transformation that linearly converts  a  dataset into a set of uncorrelated  variables called principal components (PCs). The PCs are computed by diagonalization of the data correlation matrix, with the resulting eigenvectors corresponding to PCs and the resulting
 eigenvalues to the variance explained by the PCs.
 The eigenvector corresponding to the largest eigenvalue gives the direction
 of greatest variance (PC1), the second largest eigenvalue gives the direction
 of the next highest variance (PC2), and so on (e.g., [Jolliffe 2002](http://www.springer.com/statistics/statistical+theory+and+methods/book/978-0-387-95442-4)). 
 
- **Robust PCA**  Robust  principal component analysis using the Projection–Pursuit principle. The data is projected on  a lower-dimensional space such that a robust measure of variance of the projected data will be maximized ([Croux, Filzmoser and Oliveira, 2007](http://www.sciencedirect.com/science/article/pii/S016974390700007X)). 
+ **Robust PCA**:  Robust  principal component analysis using the Projection–Pursuit principle. The data is projected on  a lower-dimensional space such that a robust measure of variance of the projected data will be maximized ([Croux, Filzmoser and Oliveira, 2007](http://www.sciencedirect.com/science/article/pii/S016974390700007X)). 
 
 #### Hierarchical Clustering
-
-One of the advantages of hierarchical clustering is the needless of a prior specification of the number of clusters to be searched. Instead, the method requires a measurement of dissimilarity between groups of observations, which is  based
-on the pairwise dissimilarities among the observations within each of  two groups. The outcome is a  hierarchical representations in which
+An unsupervised learning technique whose aim is to find hidden structures in the dataset. 
+Instead of find a single partitioning of the
+data, the goal of hierarchical clustering is to build a hierarchy of partitions which may reveal interesting structure in the dataset at multiple levels of association. A clear advantage is the needless of a prior specification of the number of clusters to be searched.
+Nonetheless, the method implicitly  assumes a measure of similarity between pairs of objects. Which in our case is given by the correlation distance d(x,y)= 1-|corr(x,y)|. The outcome is a hierarchical representations in which
 the clusters at each level of the hierarchy are created by merging clusters
-at the next lower level. 
-We employ an  agglomerative approach. Initially each variable is assigned to its own cluster, then the method   recursively merges a selected pair of
-clusters into a single cluster, where each  new pair composed by  merging  the two
-groups with the smallest  dissimilarity in the immediately  lower level. 
+at the next lower level.
+We employ an agglomerative approach, which starts with a single cluster assigned for each object and then
+progressively merge the two closest clusters until a single cluster remains.
 
-**Number of Clusters**  To guide the user, we  display an optimal number of clusters via [Calinski and Harabasz, 1972](http://www.tandfonline.com/doi/abs/10.1080/03610927408827101#.VFtZ_77ZLlc) index. The groups are  color-coded  in the dendrogram and graph visualizations.
+**Number of Clusters**:  To guide the user, we  display an optimal number of clusters via [Calinski and Harabasz, 1972](http://www.tandfonline.com/doi/abs/10.1080/03610927408827101#.VFtZ_77ZLlc) index. The groups are  color-coded  in the dendrogram and graph visualizations.
 
 
 #### Correlation Method
 
-**Pearson** a measure of the linear correlation  between two variables X and Y ([Pearson  1895](http://adsabs.harvard.edu/abs/1895RSPS...58..240P)).
+**Pearson**: a measure of the linear correlation  between two variables X and Y ([Pearson  1895](http://adsabs.harvard.edu/abs/1895RSPS...58..240P)).
 
-**Spearman** a measure of the monotonic  correlation  between two variables X and Y 
+**Spearman**: a measure of the monotonic  correlation  between two variables X and Y 
 ([Spearman 1904](http://www.jstor.org/stable/1412159?origin=JSTOR-pdf)).
 
-**Maximum Information Coefficient** a measure of linear or non-linear correlation  between two variables X and Y ([Reshef et al. 2011](http://www.sciencemag.org/content/334/6062/1518)). The current version of MIC does not support NA.
+**Maximum Information Coefficient**: a measure of linear or non-linear correlation  between two variables X and Y ([Reshef et al. 2011](http://www.sciencemag.org/content/334/6062/1518)). The current version of MIC does not support NA.
 
 
 
 ### Visualization
-
-AMADA offers many different plots to analyze your data set  using correlation analysis and unsupervised learning. 
-
-These are the standard types of plots:
+AMADA offers many different plots to represent the results of the  correlation analysis and unsupervised learning of the datasets.
 
 
-**Heatmap** Plots a correlation matrix color-coded by the correlation level between each pair of variables (e.g., [Raivo Kolde, 2013](http://CRAN.R-project.org/package=pheatmap)). 
+The user can choose any of the following plots:
 
-**Distogram** Plots  a distance  matrix  containing the distances, taken pairwise, of a all sets of variables (e.g., [Aron Eklund,  2012](http://www.cbs.dtu.dk/~eklund/squash/)). The distance being used is the correlation distance, given by d(x,y)= 1-|corr(x,y)|. 
 
-**Dendrogram**  Plots the dendrogram of the hierarchical clustering applied to the catalog variables. Options are: Phylogram, Cladrogram or Fan. This type visualization is adapted from  tools for  Phylogenetic studies
+**Heatmap**: Plots a correlation matrix color-coded by the correlation level between each pair of variables (e.g., [Raivo Kolde, 2013](http://CRAN.R-project.org/package=pheatmap)). For visualization purposes, the arrangement of the rows and columns are made following a hierarchical clustering with a dendrogram drawn at the edges of the matrix.
+
+**Distogram**: Plots  a distance  matrix  containing the distances, taken pairwise, of  all sets of variables (e.g., [Aron Eklund,  2012](http://www.cbs.dtu.dk/~eklund/squash/)). The distance being used is the correlation distance, given by d(x,y)= 1-|corr(x,y)|. 
+
+**Dendrogram**:  Plots the dendrogram of the hierarchical clustering applied to the catalog variables. Options are: Phylogram, Cladrogram or Fan. This type of visualization is adapted from  tools for  Phylogenetic studies
 (e.g., [Paradis et al. 2003](http://bioinformatics.oxfordjournals.org/content/20/2/289.abstract)). 
 
-**Graph** Plots a  clustered graph is built in which vertices represent features  and edge widths  are weighted by the degree of correlation between each pair or variables ([Epskamp et al. 2012](http://www.jstatsoft.org/v48/i04/)). 
+**Graph**: Plots a clustered graph built in such way that each vertice represent a different parameter and the thickness of the edges are weighted by the degree of correlation between each pair or variables ([Epskamp et al. 2012](http://www.jstatsoft.org/v48/i04/)). The configuration is such that highly correlated parameters appear closer in the graph.
 
-**Nightingale chart** Plots a polar barplot whose lenght of the strips displays  the relative contribution of  each variable to the *i-th* Principal Component. This plot  is inspired by the original chart from  [Nightingale 1858](http://www.florence-nightingale-avenging-angel.co.uk/Nightingale_Hockey_Stick.pdf).  
+**Nightingale chart**: Plots a polar barplot. The length of the strips represents  the relative contribution of  each variable to the *i-th* Principal Component. This plot  is inspired by the original chart from  [Nightingale 1858](http://www.florence-nightingale-avenging-angel.co.uk/Nightingale_Hockey_Stick.pdf).  
 *Probably one of the most influential visualizations of all time used by  Florence Nightingale to convince Queen Victoria about improving hygiene at military hospitals, therefore  saving lives of  thousands of soldiers.*
 
 ### References
