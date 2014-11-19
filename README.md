@@ -14,9 +14,7 @@ AMADA allows the users to either use available datasets or upload their own.   C
 
 #### Available datasets
 
-The enclosed datasets  are examples following the same nomenclature of  their respective source 
-articles. I suggest the user to check the original articles or catalogs for a better understanding of
-their meaning.
+The available  datasets  follow the same nomenclature of their respective source articles. I recommend  the user to check the original articles or catalogs for a better understanding of their meaning.
 
 * Supernova host properties ([Table 1, Sako, M. et al. 2014](http://adsabs.harvard.edu/abs/2014arXiv1401.3317S)): Type Ia and II  Supernova host-galaxy  properties  from  Sloan Digital Sky Survey  multi-band photometry.
 
@@ -29,7 +27,7 @@ their meaning.
 #### Import dataset
 
  Data must be imported as a CSV/TXT format, columns are named and  separated by  spaces.
-It may contain an arbitrary number of columns and rows. If missing data is present, it should be marked as NA.
+It may contain an arbitrary number of columns and rows. If missing data is present, it should be marked as NA. An example of how a dataset should be formatted can be found by clicking the tab "Dataset" on the main page.
 
 ### Control Options
 
@@ -37,11 +35,11 @@ On the left panel, the user can choose among different methods of analysis and v
 
 **Fraction of data to display**: choose the percentage of data displayed on the screen. 
 
- **Correlation method**:choose among *Pearson*, *Spearman* or *Maximum Information Coefficient (MIC)*. 
+ **Correlation method**: choose among *Pearson*, *Spearman* or *Maximum Information Coefficient (MIC)*. 
 
  **Display numbers**: choose if correlation coefficients should be displayed in the heatmap. 
 
-**Dendrogram type**: choose among *Phylogram*, *Cladrogram* or *Fan*.
+**Dendrogram type**: choose among *Phylogram*, *Cladogram* or *Fan*.
 
 **Graph layout**: choose among *Spring* or *Circular*.
 
@@ -101,7 +99,7 @@ The user can choose any of the following plots:
 
 **Distogram**: Plots  a distance  matrix  containing the distances, taken pairwise, of  all sets of variables (e.g., [Aron Eklund,  2012](http://www.cbs.dtu.dk/~eklund/squash/)). The distance being used is the correlation distance, given by d(x,y)= 1-|corr(x,y)|. 
 
-**Dendrogram**:  Plots the dendrogram of the hierarchical clustering applied to the catalog variables. Options are: Phylogram, Cladrogram or Fan. This type of visualization is adapted from  tools for  Phylogenetic studies
+**Dendrogram**:  Plots the dendrogram of the hierarchical clustering applied to the catalog variables. Options are: Phylogram, Cladogram or Fan. This type of visualization is adapted from  tools for  Phylogenetic studies
 (e.g., [Paradis et al. 2003](http://bioinformatics.oxfordjournals.org/content/20/2/289.abstract)). 
 
 **Graph**: Plots a clustered graph built in such way that each vertice represent a different parameter and the thickness of the edges are weighted by the degree of correlation between each pair or variables ([Epskamp et al. 2012](http://www.jstatsoft.org/v48/i04/)). The configuration is such that highly correlated parameters appear closer in the graph.
