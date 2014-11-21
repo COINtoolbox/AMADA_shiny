@@ -65,7 +65,7 @@ of the next highest variance (PC2), and so on (e.g., [Jolliffe 2002](http://www.
  **Robust PCA**:  Robust  principal component analysis using the Projection–Pursuit principle. The data is projected on  a lower-dimensional space such that a robust measure of variance of the projected data will be maximized ([Croux, Filzmoser and Oliveira, 2007](http://www.sciencedirect.com/science/article/pii/S016974390700007X)). 
 
 #### Hierarchical Clustering
-An unsupervised learning technique whose aim is to find hidden structures in the dataset. 
+An unsupervised learning technique whose aim is to find hidden structures  in the dataset. 
 Instead of find a single partitioning of the
 data, the goal of hierarchical clustering is to build a hierarchy of partitions which may reveal interesting structure in the dataset at multiple levels of association. A clear advantage is the needless of a prior specification of the number of clusters to be searched.
 Nonetheless, the method implicitly  assumes a measure of similarity between pairs of objects. Which in our case is given by the correlation distance d(x,y)= 1-|corr(x,y)|. The outcome is a hierarchical representations in which
@@ -102,7 +102,7 @@ The user can choose any of the following plots:
 **Dendrogram**:  Plots the dendrogram of the hierarchical clustering applied to the catalog variables. Options are: Phylogram, Cladogram or Fan. This type of visualization is adapted from  tools for  Phylogenetic studies
 (e.g., [Paradis et al. 2003](http://bioinformatics.oxfordjournals.org/content/20/2/289.abstract)). 
 
-**Graph**: Plots a clustered graph built in such way that each vertice represent a different parameter and the thickness of the edges are weighted by the degree of correlation between each pair or variables ([Epskamp et al. 2012](http://www.jstatsoft.org/v48/i04/)). The configuration is such that highly correlated parameters appear closer in the graph.
+**Graph**: Plots a clustered graph built in such way that each vertice represent a different parameter and the thickness of the edges are weighted by the degree of correlation between each pair of variables ([Epskamp et al. 2012](http://www.jstatsoft.org/v48/i04/)). The configuration is such that highly correlated parameters appear closer in the graph.
 
 **Nightingale chart**: Plots a polar barplot. The length of the strips represents  the relative contribution of  each variable to the *i-th* Principal Component. This plot  is inspired by the original chart from  [Nightingale 1858](http://www.florence-nightingale-avenging-angel.co.uk/Nightingale_Hockey_Stick.pdf).  
 *Probably one of the most influential visualizations of all time used by  Florence Nightingale to convince Queen Victoria about improving hygiene at military hospitals, therefore  saving lives of  thousands of soldiers.*

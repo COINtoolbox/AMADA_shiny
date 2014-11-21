@@ -18,22 +18,22 @@ shinyUI(fluidPage(theme = "bootstrapblue.css",
   # Sidebar with controls
   sidebarPanel(
   
-    tags$head(tags$style(
-type="text/css", "
+ #   tags$head(tags$style(
+#type="text/css", "
             #loadmessage {
-               position: fixed;
-               top: 50%;
-               left: 0px;
-               width: 100%;
-               padding: 5px 0px 5px 0px;
-             text-align: center;
-               font-weight: bold;
-               font-size: 125%;
-              color: #FFFFFF;
-               background-color: #B22222;
-               z-index: 105;
-             }
-          ")),
+#               position: fixed;
+#               top: 50%;
+#               left: 0px;
+#               width: 100%;
+#               padding: 5px 0px 5px 0px;
+#             text-align: center;
+#               font-weight: bold;
+#               font-size: 125%;
+#              color: #FFFFFF;
+#               background-color: #B22222;
+#               z-index: 105;
+#             }
+#          ")),
 #h3("Overview"),
 #    p("AMADA allows an iterative exploration and information retrieval of high-dimensional data sets.
 #This is done by performing a hierarchical clustering analysis for different choices of correlation matrices and by doing a principal components analysis
