@@ -43,6 +43,9 @@ On the left panel, the user can choose among different methods of analysis and v
 
 **Graph layout**: choose among *Spring* or *Circular*.
 
+ **Chord diagram colour**: choose among different colour schemes. 
+
+
  **Number of PCs**: choose the number or principal components to display as Nightingale charts. 
 
  **PCA method**: choose among *Standard PCA* or *Robust PCA*. 
@@ -104,6 +107,9 @@ The user can choose any of the following plots:
 
 **Graph**: Plots a clustered graph built in such way that each vertice represent a different parameter and the thickness of the edges are weighted by the degree of correlation between each pair of variables ([Epskamp et al. 2012](http://www.jstatsoft.org/v48/i04/)). The configuration is such that highly correlated parameters appear closer in the graph.
 
+**Chord diagram**: Plots a matrix using a  circular layout. The columns and rows are represented by segments around the circle. Individual cells are shown as ribbons, which connect the corresponding row and column segments ([Gu, Z. (2014)](http://bioinformatics.oxfordjournals.org/content/early/2014/06/14/bioinformatics.btu393)). The  thickness of the ribbons  are weighted by the degree of correlation between each pair of variables. For a given choice of colour pallete, the colour intensity ranges from fully anti-correlated to correlated.   
+
+
 **Nightingale chart**: Plots a polar barplot. The length of the strips represents  the relative contribution of  each variable to the *i-th* Principal Component. This plot  is inspired by the original chart from  [Nightingale 1858](http://www.florence-nightingale-avenging-angel.co.uk/Nightingale_Hockey_Stick.pdf).  
 *Probably one of the most influential visualizations of all time used by  Florence Nightingale to convince Queen Victoria about improving hygiene at military hospitals, therefore  saving lives of  thousands of soldiers.*
 
@@ -126,7 +132,7 @@ Foundation for Statistical Computing, Vienna, Austria. URL [http://www.R-project
 [ggthemes](http://CRAN.R-project.org/package=ggthemes),
 [reshape](http://www.jstatsoft.org/v21/i12/paper),
 [pcaPP](http://CRAN.R-project.org/package=pcaPP),
-[mvtnorm](http://CRAN.R-project.org/package=mvtnorm)
-
+[mvtnorm](http://CRAN.R-project.org/package=mvtnorm),
+[circlize](http://CRAN.R-project.org/package=circlize)
 
 

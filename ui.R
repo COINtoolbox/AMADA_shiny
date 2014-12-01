@@ -10,10 +10,14 @@ library(pheatmap)
 library(markdown)
 library(shinyIncubator)
 require(shinysky)
+require(circlize)
+require(RColorBrewer)
+
+
 
 shinyUI(fluidPage(theme = "bootstrapblue.css",
  
-  headerPanel('AMADA Web User Interface (v0.1)'),
+  headerPanel('AMADA Web User Interface (v0.2)'),
   img(src='COIN.jpg',height = 95, width = 650,align="right"),
   # Sidebar with controls
   sidebarPanel(
@@ -77,6 +81,12 @@ h5("Graph"),
 selectInput("layout", "Layout:",
             list("Spring" = "spring",
                  "Circular" = "circular")),
+
+h5("Chord diagram"),
+selectInput("colour", "Colour:",
+            list("Red-Blue" = "RdBu",
+                 "Yellow-Green" = "YlGn","Purple-Green"="PRGn", "Orange-Red"="OrRd")),
+
 h5("Nightingale chart"),
 selectInput("PCAmethod", "PCA Method:",
             list("PCA" = "PCA",
@@ -107,7 +117,8 @@ mainPanel(
     tabPanel("Heatmap",plotOutput('plot1')),
       tabPanel(title="Distogram",plotOutput('plot2')),
       tabPanel("Dendrogram",plotOutput('plot3')),
-      tabPanel("Graph",plotOutput('plot4'),verbatimTextOutput("text ola")),
+      tabPanel("Graph",plotOutput('plot4')),
+      tabPanel("Chord diagram",plotOutput('plot6')),
       tabPanel("Nightingale chart",plotOutput('plot5',width = "100%")),
       tabPanel("Copyright", includeMarkdown("Copyright.md")),
      tabPanel("COIN", includeMarkdown("COIN.md"))

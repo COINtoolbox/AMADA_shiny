@@ -111,10 +111,22 @@ output$plot3 <- renderPlot({
     plotgraph(Temp.cor(),layout=input$layout)
 },height = 600, width = 750)
 
+
+
 # PCA 
 output$plot5 <- renderPlot({
   par(mar = c(0.5, 0.5, 0, 0.5))
   Nightingale(Corr_MIC(selectedData(),method="pearson"),npcs=input$npcs,PCAmethod=input$PCAmethod)},
 height = 700, width = 800)
+
+# Chord 
+output$plot6 <- renderPlot({
+  par(mar = c(0.5, 0.5, 0, 0.5))
+  chordDiagram(Temp.cor(),grid.col = "gray70",symmetric = T,transparency = 0.3,
+               col = colorRamp2(seq(-1, 1, by = 0.25), rev(brewer.pal(9,input$colour))))
+
+},height = 600, width = 600)
+
+
 
 })
