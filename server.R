@@ -20,8 +20,8 @@ library(shiny)
 library(mvtnorm)
 library(pheatmap)
 library(markdown)
-library(shinyIncubator)
-require(shinysky)
+#library(shinyIncubator)
+#require(shinysky)
 options(shiny.maxRequestSize=100*1024^2)
 
   
