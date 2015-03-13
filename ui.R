@@ -9,9 +9,9 @@ library(mvtnorm)
 library(pheatmap)
 library(markdown)
 library(shinyIncubator)
-require(shinysky)
-require(circlize)
-require(RColorBrewer)
+library(shinysky)
+library(circlize)
+library(RColorBrewer)
 
 
 
