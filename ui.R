@@ -63,7 +63,9 @@ selectInput("method", "Method:",
 h5("Dataset"),
 sliderInput('ntot', 'Fraction of data to display (%)', 10,
             min = 10, max = 100,step=10),
-
+br(), 
+downloadButton("downloadData", label = "Download Data", class = NULL),
+br(), 
 
 
 h5("Heatmap"),

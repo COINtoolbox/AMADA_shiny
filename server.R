@@ -20,6 +20,8 @@ library(shiny)
 library(mvtnorm)
 library(pheatmap)
 library(markdown)
+library(plotly)
+#library(networkD3)
 #library(shinyIncubator)
 #require(shinysky)
 options(shiny.maxRequestSize=100*1024^2)
@@ -61,7 +63,13 @@ shinyServer(function(input, output, session) {
   }})
 
 
-
+  output$downloadData <- downloadHandler(
+    filename = function() { paste(input$dataset, '.csv', sep='') },
+    content = function(file) {
+      write.csv(selectedData(), file)
+    }
+  )
+  
 #  
 
   clusters <- reactive({
