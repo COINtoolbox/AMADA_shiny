@@ -1,8 +1,17 @@
+#  R package AMADA 
+# Copyright (C) 2014  COIN
+# Author : Rafael S. de Souza (rafael.2706@gmail.com)
+#This program is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License version 3 as published by
+#the Free Software Foundation.
 
-# This is the user-interface definition of a Shiny web application.
-# You can find out more about building applications with Shiny here:
-#
-# http://shiny.rstudio.com
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+
+#  A copy of the GNU General Public License is available at
+#  http://www.r-project.org/Licenses/
 #
 library(shiny)
 library(mvtnorm)
@@ -12,7 +21,7 @@ library(markdown)
 #library(shinysky)
 library(circlize)
 library(RColorBrewer)
-
+library(shinysky)
 
 
 shinyUI(fluidPage(theme = "bootstrapblue.css",
@@ -51,9 +60,12 @@ h4("Data Input"),
                      "N-body halo catalog" = "Guo11","ZENS catalog"="ZENS")),
 fileInput('file1', 'Import dataset (CSV/TXT)', accept=c('.dat', '.txt','.csv')),
 
- 
-    
-    h4("Control  options"),
+
+
+
+
+
+h4("Control  options"),
 
 h5("Correlation"),
 selectInput("method", "Method:",
@@ -64,7 +76,7 @@ h5("Dataset"),
 sliderInput('ntot', 'Fraction of data to display (%)', 10,
             min = 10, max = 100,step=10),
 br(), 
-downloadButton("downloadData", label = "Download Data", class = NULL),
+downloadButton("downloadData", label = "Download Data"),
 br(), 
 
 

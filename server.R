@@ -20,7 +20,8 @@ library(shiny)
 library(mvtnorm)
 library(pheatmap)
 library(markdown)
-library(plotly)
+#library(plotly)
+#require(DT)
 #library(networkD3)
 #library(shinyIncubator)
 #require(shinysky)
@@ -62,15 +63,15 @@ shinyServer(function(input, output, session) {
                }}} }         
   }})
 
-
+  
   output$downloadData <- downloadHandler(
-    filename = function() { paste(input$dataset, '.csv', sep='') },
+    filename = function() {'catalog.dat' },
     content = function(file) {
-      write.csv(selectedData(), file)
+      tempObj <- selectedData()
+      write.table(tempObj, file,sep=" ", row.names = FALSE)
     }
   )
   
-#  
 
   clusters <- reactive({
     kmeans(selectedData(), input$clusters)
@@ -94,11 +95,6 @@ output$plot1 <- renderPlot({
   
 },
 height = 700, width = 800)
-#output$dist= renderText({
-#  "The plot displays   the color-coded  dissimilarity level for each pair of variables. The bluest squares 
-#  represents parameters with the low dissimilarity or high correlation, conversely the redests squares
-#  parameters wit high dissimilarity or low correlation."
-#})
 
 # Correlation Matrix
 output$plot2 <- renderPlot({
