@@ -30,7 +30,6 @@ options(shiny.maxRequestSize=100*1024^2)
   
 shinyServer(function(input, output, session) {
   # Now, we need to create the reactive container 
-  
   selectedData <- reactive({
     # First we need to have some data
     if(input$dataSourceFlag == F) {

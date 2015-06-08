@@ -140,5 +140,4 @@ mainPanel(
 div(class="progress-bar",class="progress progress-striped active",style="width: 70%;",
     conditionalPanel(condition="$('html').hasClass('shiny-busy')",
                      tags$div("Calculating... wait a minute.",align="top")))
-#,busyIndicator("Calculating... wait a minute.",wait = 0)
 ))
