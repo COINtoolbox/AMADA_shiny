@@ -21,7 +21,7 @@ library(markdown)
 #library(shinysky)
 library(circlize)
 library(RColorBrewer)
-library(shinysky)
+#library(shinysky)
 
 
 shinyUI(fluidPage(theme = "bootstrapblue.css",
